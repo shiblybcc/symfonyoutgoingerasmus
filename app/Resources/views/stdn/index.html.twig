@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Stdns list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for stdn in stdns %}
+            <tr>
+                <td><a href="{{ path('stdn_show', { 'id': stdn.id }) }}">{{ stdn.id }}</a></td>
+                <td>{{ stdn.name }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('stdn_show', { 'id': stdn.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('stdn_edit', { 'id': stdn.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('stdn_new') }}">Create a new stdn</a>
+        </li>
+    </ul>
+{% endblock %}

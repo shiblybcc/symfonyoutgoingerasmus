@@ -1,0 +1,75 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Stammdaten
+ *
+ * @ORM\Table(name="stammdaten")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\StammdatenRepository")
+ */
+class Stammdaten
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nachname", type="string", length=255)
+     */
+    private $nachname;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="matno", type="integer")
+     */
+    private $matno;
+
+
+
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="Address", mappedBy="address")
+     */
+    private $addresses;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Application", mappedBy="application")
+     */
+    private $applications;
+
+
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Vertif", inversedBy="stammdaten")
+     * @ORM\JoinColumn(name="vertif_id", referencedColumnName="id")
+     */
+    private $vertif;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Course", inversedBy="stammdaten")
+     * @ORM\JoinColumn(name="course_id", referencedColumnName="id")
+     */
+    private $course;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Stdn", inversedBy="stammdaten")
+     * @ORM\JoinColumn(name="stdn_id", referencedColumnName="id")
+     */
+    private $stdn;
+
+
+
+}

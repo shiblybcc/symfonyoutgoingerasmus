@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Vertifs list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for vertif in vertifs %}
+            <tr>
+                <td><a href="{{ path('vertif_show', { 'id': vertif.id }) }}">{{ vertif.id }}</a></td>
+                <td>{{ vertif.name }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('vertif_show', { 'id': vertif.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('vertif_edit', { 'id': vertif.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('vertif_new') }}">Create a new vertif</a>
+        </li>
+    </ul>
+{% endblock %}

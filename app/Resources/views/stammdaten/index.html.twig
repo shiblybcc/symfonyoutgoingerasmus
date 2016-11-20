@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Stammdatens list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nachname</th>
+                <th>Matno</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for stammdaten in stammdatens %}
+            <tr>
+                <td><a href="{{ path('stammdaten_show', { 'id': stammdaten.id }) }}">{{ stammdaten.id }}</a></td>
+                <td>{{ stammdaten.nachname }}</td>
+                <td>{{ stammdaten.matno }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('stammdaten_show', { 'id': stammdaten.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('stammdaten_edit', { 'id': stammdaten.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('stammdaten_new') }}">Create a new stammdaten</a>
+        </li>
+    </ul>
+{% endblock %}

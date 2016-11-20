@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Unis list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for uni in unis %}
+            <tr>
+                <td><a href="{{ path('uni_show', { 'id': uni.id }) }}">{{ uni.id }}</a></td>
+                <td>{{ uni.name }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('uni_show', { 'id': uni.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('uni_edit', { 'id': uni.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('uni_new') }}">Create a new uni</a>
+        </li>
+    </ul>
+{% endblock %}
