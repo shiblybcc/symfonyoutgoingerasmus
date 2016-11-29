@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Address;
 use AppBundle\Entity\Stammdaten;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -40,6 +41,10 @@ class StammdatenController extends Controller
     public function newAction(Request $request)
     {
         $stammdaten = new Stammdaten();
+        $address1 = new Address();
+        $address1->setStreet('street name');
+        $stammdaten->getAddresses()->add($address1);
+
         $form = $this->createForm('AppBundle\Form\StammdatenType', $stammdaten);
         $form->handleRequest($request);
 

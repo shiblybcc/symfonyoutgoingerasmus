@@ -5,6 +5,7 @@ namespace AppBundle\Form;
 use Doctrine\ORM\Mapping\Entity;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -29,8 +30,8 @@ class StammdatenType extends AbstractType
                     'class' => 'AppBundle:Stdn',
                     'choice_label' => 'name',
                 ))
-                ->add('addresses', AddressType::class, array(
-                    'data_class'   =>  'AppBundle:Address',
+                ->add('addresses',CollectionType::class, array(
+                    'entry_type'   => AddressType::class
                 ))
         ;
     }
